@@ -9366,7 +9366,7 @@ width: 100%;
   border-radius: 100px;
   width: auto;
   padding: 10px 16px;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 .testimonial-slider-active-2 .testimonial-pagination-wrap .testimonial-pagination-2 .swiper-pagination-bullet {
   width: 20px;
@@ -19196,4 +19196,25 @@ list-style: none;
         right: auto;
         bottom: 20px;
     }
+    .testimonial-card-2 {
+    background-color: var(--white-color);
+    padding: 18px 10px 10px 10px;
+    border: 2px solid var(--white-color);
+    border-radius: 16px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 40px;
+    height: auto;
+    align-items: center;
+    -webkit-transition: all 0.3s linear 0s;
+    -o-transition: all 0.3s linear 0s;
+    transition: all 0.3s linear 0s;
+}
+.testimonial-card-2 .thumb img {
+    width: 100%;
+    border-radius: 12px;
+    height: 400px;
+    object-fit: cover;
+}
 }
