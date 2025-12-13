@@ -865,6 +865,9 @@
     21 Donation Form Tabs and Functionality
     --------------------------------------------------------------*/
     
+    // Store the currently selected amount
+    let currentDonationAmount = 18000;
+    
     // Tab switching functionality
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -883,11 +886,11 @@
         });
     });
 
-    // Amount button functionality for Indian Citizen form
+    // Amount button functionality
     document.querySelectorAll('.amount').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
-            const amount = this.getAttribute('data-amount');
+            const amount = parseInt(this.getAttribute('data-amount'));
             
             // Remove active class from all amount buttons
             document.querySelectorAll('.amount').forEach(b => b.classList.remove('active'));
@@ -895,11 +898,8 @@
             // Add active class to clicked button
             this.classList.add('active');
             
-            // Update the input field
-            const amountInput = document.querySelector('.selected-amount');
-            if (amountInput) {
-                amountInput.value = amount;
-            }
+            // Update current donation amount
+            currentDonationAmount = amount;
             
             // Clear custom input if exists
             const customInput = document.querySelector('.custom-input');
@@ -908,7 +908,7 @@
             }
             
             // Update total amount display
-            updateTotalAmount();
+            updateTotalAmount(amount);
         });
     });
 
@@ -918,18 +918,17 @@
         customBtn.addEventListener('click', function(e) {
             e.preventDefault();
             const customInput = document.querySelector('.custom-input');
-            if (customInput && customInput.value && customInput.value > 0) {
+            if (customInput && customInput.value && parseInt(customInput.value) > 0) {
+                const customAmount = parseInt(customInput.value);
+                
                 // Remove active class from all amount buttons
                 document.querySelectorAll('.amount').forEach(b => b.classList.remove('active'));
                 
-                // Update the main input field
-                const amountInput = document.querySelector('.selected-amount');
-                if (amountInput) {
-                    amountInput.value = customInput.value;
-                }
+                // Update current donation amount
+                currentDonationAmount = customAmount;
                 
                 // Update total amount display
-                updateTotalAmount();
+                updateTotalAmount(customAmount);
             } else {
                 alert('Please enter a valid amount');
             }
@@ -947,26 +946,15 @@
         });
     }
 
-    // Update amount when input field is changed
-    const amountInput = document.querySelector('.selected-amount');
-    if (amountInput) {
-        amountInput.addEventListener('change', updateTotalAmount);
-        amountInput.addEventListener('input', updateTotalAmount);
-    }
-
-    function updateTotalAmount() {
-        const amountInput = document.querySelector('.selected-amount');
-        if (amountInput) {
-            const amount = amountInput.value;
-            const totalElements = document.querySelectorAll('.total-amount');
-            totalElements.forEach(el => {
-                el.textContent = '₹' + (amount || '0');
-            });
-        }
+    function updateTotalAmount(amount) {
+        const totalElements = document.querySelectorAll('.total-amount');
+        totalElements.forEach(el => {
+            el.textContent = '₹' + (amount || '18000');
+        });
     }
 
     // Initialize total amount on page load
-    updateTotalAmount();
+    updateTotalAmount(18000);
 
     // Copy to clipboard functionality
     window.copyToClipboard = function(text, btn) {
@@ -995,35 +983,25 @@
     };
 
     // Form submission handlers
-    const indianForm = document.querySelector('.indian-form');
-    if (indianForm) {
-        indianForm.addEventListener('submit', function(e) {
+    const donationForm = document.querySelector('form[name="donation-form"], .donation-form');
+    if (donationForm) {
+        donationForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const amount = document.querySelector('.selected-amount').value;
-            const name = this.querySelector('input[placeholder="Full Name"]').value;
-            const email = this.querySelector('input[placeholder="Email Address"]').value;
             
-            if (name && email && amount) {
-                alert(`Thank you ${name}! Your donation of ₹${amount} is being processed. A confirmation will be sent to ${email}`);
-                this.reset();
-                updateTotalAmount();
-            } else {
-                alert('Please fill all required fields');
-            }
-        });
-    }
-
-    const nriForm = document.querySelector('.nri-form');
-    if (nriForm) {
-        nriForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = this.querySelector('input[placeholder="Full Name"]').value;
-            const email = this.querySelector('input[placeholder="Email Address"]').value;
-            const amount = this.querySelector('input[placeholder="Donation Amount (₹)"]').value;
+            // Get form data
+            const name = this.querySelector('input[placeholder="Full Name"]')?.value || this.querySelector('input[name="name"]')?.value;
+            const email = this.querySelector('input[placeholder="Email Address"]')?.value || this.querySelector('input[name="email"]')?.value;
             
-            if (name && email && amount) {
-                alert(`Thank you ${name}! Your NRI donation registration of ₹${amount} has been received. Please complete the bank transfer and a receipt will be sent to ${email}`);
+            // Get tax exemption preference
+            const taxExemption = this.querySelector('input[name="tax_exemption"]:checked')?.value || 'no';
+            
+            if (name && email && currentDonationAmount) {
+                alert(`Thank you ${name}! Your donation of ₹${currentDonationAmount} with Tax Exemption: ${taxExemption.toUpperCase()} is being processed. A confirmation will be sent to ${email}`);
                 this.reset();
+                updateTotalAmount(18000);
+                // Reset amount buttons
+                document.querySelectorAll('.amount').forEach(b => b.classList.remove('active'));
+                document.querySelector('.amount[data-amount="18000"]')?.classList.add('active');
             } else {
                 alert('Please fill all required fields');
             }
