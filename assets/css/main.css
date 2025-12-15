@@ -2946,6 +2946,7 @@ width: 100%;
   align-items: center;
   justify-content: center;
   gap: 5px;
+  margin: auto;
 }
 @media (max-width: 767px) {
   .top-bar-content .text-wrap {
@@ -5233,7 +5234,7 @@ width: 100%;
   background: var(--white-color);
 }
 .camping-card .content .content-top {
-  padding: 20px;
+      padding: 15px 8px 15px;
 }
 .camping-card .content .date {
   display: inline-flex;
