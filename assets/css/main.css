@@ -16896,13 +16896,13 @@ width: 100%;
   font-family: var(--outfit-font);
   font-style: normal;
   font-weight: 500;
-  font-size: 36px;
-  line-height: 28px;
+font-size: 28px;
+    line-height: 35px;
   color: var(--theme-color-3);
   margin-bottom: 0;
 }
 .details-subtitle h4 span img {
-  width: 40px;
+  width: 80px;
 }
 
 .details-title-2 {
@@ -18415,7 +18415,7 @@ width: 100%;
   font-family: var(--albert-sans-font);
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 25px;
   line-height: 30px;
   color: var(--body-color);
   margin-bottom: 0;
@@ -18533,7 +18533,6 @@ width: 100%;
 .services-details-section-2 {
   position: relative;
   z-index: 1;
-  margin-bottom: -160px;
 }
 .services-details-section-2 .d-shape-1 {
   position: absolute;
@@ -18971,7 +18970,7 @@ list-style: none;
 
 .tab-btn.active {
   background: #85BF18;
-  color: #fff;
+  color: #fff !important;
   border-color: #85BF18;
   box-shadow: 0 4px 12px rgba(133, 191, 24, 0.3);
 }
@@ -19198,11 +19197,11 @@ list-style: none;
   transform: translateY(-2px);
 }
 
-.amount.active::after {
+/* .amount.active::after {
   content: "✓";
   margin-left: 8px;
   font-size: 18px;
-}
+} */
 
 /* Tax Exemption Section */
 .tax-exemption-section {
@@ -19372,4 +19371,46 @@ list-style: none;
     height: 400px;
     object-fit: cover;
 }
+.payment-method-form form .form-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 29px;
+}
+.details-subtitle h4 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: var(--outfit-font);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    flex-direction: column;
+    line-height: 32px;
+    color: var(--theme-color-3);
+    margin-bottom: 0;
+}
+.bank-info-box {
+    background: #f9f9f9;
+    padding: 0px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+.testimonial-card-3 .testimonial-card-thumb .author-info {
+    background: rgb(0 0 0 / 53%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 280px;
+    width: 100%;
+    position: absolute;
+    bottom: 79px;
+    left: 20px;
+}
+}
+.total-amount{
+  color: #000;
 }

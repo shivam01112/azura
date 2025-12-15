@@ -949,12 +949,13 @@
     function updateTotalAmount(amount) {
         const totalElements = document.querySelectorAll('.total-amount');
         totalElements.forEach(el => {
-            el.textContent = '₹' + (amount || '18000');
+            el.textContent = '₹' + (amount || '');
         });
     }
 
     // Initialize total amount on page load
-    updateTotalAmount(18000);
+    updateTotalAmount(data-amount);
+    
 
     // Copy to clipboard functionality
     window.copyToClipboard = function(text, btn) {
