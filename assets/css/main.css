@@ -3298,6 +3298,7 @@ width: 100%;
   .hero-side {
     padding-top: 100px;
     padding-bottom: 140px;
+    background-position: right;
   }
 }
 .hero-side .group-shape-1 {
@@ -19332,6 +19333,9 @@ list-style: none;
   .logo-wrap img {
   width: 100%;
   max-width: 57px;
+}
+.vector-shape{
+  display: none;
 }
 .company-achievements-section {
   margin-top: 40px;
