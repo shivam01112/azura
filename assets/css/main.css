@@ -3296,8 +3296,8 @@ width: 100%;
 }
 @media (max-width: 767px) {
   .hero-side {
-    padding-top: 100px;
-    padding-bottom: 140px;
+    padding-top: 50px;
+    padding-bottom: 0px;
     background-position: right;
   }
 }
