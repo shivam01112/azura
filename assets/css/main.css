@@ -3297,7 +3297,7 @@ width: 100%;
 @media (max-width: 767px) {
   .hero-side {
     padding-top: 50px;
-    padding-bottom: 0px;
+    padding-bottom: 30px;
     background-position: right;
   }
 }
@@ -3415,7 +3415,7 @@ width: 100%;
 }
 @media (max-width: 767px) {
   .hero-content-1 .title h1 {
-    font-size: 36px;
+    font-size: 27px;
     line-height: 1.1;
     margin-bottom: 14px;
   }
@@ -3463,7 +3463,7 @@ width: 100%;
 }
 @media (max-width: 767px) {
   .hero-content-1 .text p {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.3;
   }
 }
@@ -16897,14 +16897,20 @@ width: 100%;
   gap: 15px;
   font-family: var(--outfit-font);
   font-style: normal;
-  font-weight: 500;
-font-size: 28px;
-    line-height: 35px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
   color: var(--theme-color-3);
   margin-bottom: 0;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, rgba(133, 191, 24, 0.08), rgba(238, 142, 21, 0.08));
+  border-radius: 12px;
+  border-left: 4px solid var(--theme-color-2);
 }
 .details-subtitle h4 span img {
-  width: 80px;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
 }
 
 .details-title-2 {
@@ -18238,37 +18244,53 @@ font-size: 28px;
 /* 35 Camping Donation Css */
 .choose-currency-2 {
   display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 24px;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 0;
 }
 @media (max-width: 991px) {
   .choose-currency-2 {
-    flex-wrap: wrap;
+    gap: 20px;
   }
 }
 .choose-currency-2 p {
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 18px;
   color: var(--theme-color-3);
   margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .choose-currency-2 .amount {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 14px;
-  background: rgba(248, 247, 240, 0.1);
-  border-radius: 88px;
+  padding: 14px 18px;
+  background: #f8f7f0;
+  border-radius: 8px;
   font-style: normal;
   font-weight: 600;
+  font-size: 15px;
   color: var(--theme-color-3);
   cursor: pointer;
-  border: none;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  text-align: center;
+  line-height: 1.4;
+  min-height: 60px;
 }
-.choose-currency-2 .amount.active, .choose-currency-2 .amount:hover {
-  background: var(--theme-color-3);
-  color: var(--theme-color-2);
+.choose-currency-2 .amount {
+  border-color: var(--theme-color-2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(238, 142, 21, 0.15);
+}
+.choose-currency-2 .amount.active {
+  background: #004540;
+  color: #fff;
+  border-color: var(--theme-color-2);
+  box-shadow: 0 6px 20px rgba(238, 142, 21, 0.3);
 }
 .choose-currency-2 .custom-amount {
   display: flex;
@@ -19089,44 +19111,63 @@ list-style: none;
 /* Custom Amount Input */
 .custom-amount-input {
   display: flex;
-  gap: 10px;
-  margin-top: 15px;
+  gap: 12px;
+  margin-top: 20px;
   flex-wrap: wrap;
+  padding: 20px;
+  background: #f9f8f6;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 69, 64, 0.1);
 }
 
 .custom-input {
   flex: 1;
-  min-width: 150px;
-  padding: 10px 15px;
+  min-width: 200px;
+  padding: 14px 16px;
   border: 2px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
   transition: all 0.3s ease;
+  background: #fff;
+}
+
+.custom-input::placeholder {
+  color: #999;
+  font-weight: 400;
 }
 
 .custom-input:focus {
   outline: none;
-  border-color: #85BF18;
-  box-shadow: 0 0 8px rgba(133, 191, 24, 0.3);
+  border-color: var(--theme-color-2);
+  box-shadow: 0 0 12px rgba(238, 142, 21, 0.2);
 }
 
 .custom-btn {
-  padding: 10px 20px;
-  background: #85BF18;
+  padding: 14px 28px;
+  background: var(--theme-color-2);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   transition: all 0.3s ease;
   white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(238, 142, 21, 0.2);
 }
 
 .custom-btn:hover {
-  background: #6fa61e;
+  background: #d67a1a;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 16px rgba(238, 142, 21, 0.3);
+}
+
+.custom-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(238, 142, 21, 0.2);
 }
 
 /* Form inputs styling */
@@ -19145,24 +19186,24 @@ list-style: none;
 
 /* Amount Buttons Wrapper */
 .amount-buttons-wrapper {
-      display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
-
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .amount-buttons-wrapper {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 15px;
   }
 }
 
 @media (max-width: 480px) {
   .amount-buttons-wrapper {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 12px;
   }
 }
 
@@ -19343,7 +19384,7 @@ list-style: none;
 .swiper-wrapper {
     position: relative;
     width: 100%;
-    height: 52vh !important;
+    height: 37vh !important;
     z-index: 1;
     display: flex;
     transition-property: transform;
