@@ -19384,7 +19384,7 @@ list-style: none;
 .swiper-wrapper {
     position: relative;
     width: 100%;
-    height: 37vh !important;
+    height: 41vh !important;
     z-index: 1;
     display: flex;
     transition-property: transform;
