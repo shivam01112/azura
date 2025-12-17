@@ -959,29 +959,58 @@
 
     // Copy to clipboard functionality
     window.copyToClipboard = function(text, btn) {
-        // Create a temporary textarea element
+        // Use modern Clipboard API
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Show visual feedback
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                btn.classList.add('copied');
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy:', err);
+                // Fallback to old method if modern API fails
+                fallbackCopyToClipboard(text, btn);
+            });
+        } else {
+            // Fallback for older browsers
+            fallbackCopyToClipboard(text, btn);
+        }
+    };
+
+    // Fallback copy to clipboard function
+    function fallbackCopyToClipboard(text, btn) {
         const textarea = document.createElement('textarea');
         textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
         document.body.appendChild(textarea);
         
-        // Select and copy the text
         textarea.select();
-        document.execCommand('copy');
-        
-        // Remove the temporary element
-        document.body.removeChild(textarea);
-        
-        // Show visual feedback
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-        btn.classList.add('copied');
-        
-        // Reset button after 2 seconds
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.classList.remove('copied');
-        }, 2000);
-    };
+        try {
+            document.execCommand('copy');
+            
+            // Show visual feedback
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+            btn.classList.add('copied');
+            
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('copied');
+            }, 2000);
+        } catch (err) {
+            console.error('Fallback: Could not copy text:', err);
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
 
     // Form submission handlers
     const donationForm = document.querySelector('form[name="donation-form"], .donation-form');
