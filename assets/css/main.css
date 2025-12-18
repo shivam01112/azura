@@ -758,7 +758,7 @@ label {
 /* 04 Header Css */
 .logo-wrap img {
   width: 100%;
-  max-width: 90px;
+  max-width: 250px;
 }
 
 .logo-wrap-2 {
@@ -18906,7 +18906,7 @@ width: 100%;
 .swiper-wrapper {
     position: relative;
     width: 100%;
-    height: 81vh !important;
+    height: 85vh !important;
     z-index: 1;
     display: flex;
     transition-property: transform;
@@ -19373,7 +19373,7 @@ padding: 0px 0px 0px 19px;
 @media (max-width: 576px) {
   .logo-wrap img {
   width: 100%;
-  max-width: 57px;
+  max-width: 130px;
 }
 .vector-shape{
   display: none;
